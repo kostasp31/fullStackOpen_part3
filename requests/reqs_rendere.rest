@@ -1,0 +1,31 @@
+GET https://fullstackopen-part3-1-anv1.onrender.com/api/persons/
+
+###
+GET https://fullstackopen-part3-1-anv1.onrender.com/api/persons/1
+
+###
+GET https://fullstackopen-part3-1-anv1.onrender.com/api/persons/50084
+
+###
+POST https://fullstackopen-part3-1-anv1.onrender.com/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "kostas P",
+    "number": "6962536422"
+}
+
+###
+POST https://fullstackopen-part3-1-anv1.onrender.com/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Petros K",
+    "number": "75767676356"
+}
+
+###
+DELETE https://fullstackopen-part3-1-anv1.onrender.com/api/persons/99910
+
+###
+HEAD https://fullstackopen-part3-1-anv1.onrender.com/api/persons/
