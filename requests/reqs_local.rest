@@ -1,7 +1,7 @@
 GET http://localhost:3001/api/persons/
 
 ###
-GET http://localhost:3001/api/persons/1
+GET http://localhost:3001/api/persons/66b3a4fc24d23216e9845a77
 
 ###
 GET http://localhost:3001/api/persons/50084
@@ -25,7 +25,16 @@ content-type: application/json
 }
 
 ###
-DELETE http://localhost:3001/api/persons/18382
+PUT http://localhost:3001/api/persons/66b3e28e5230678d18c5f79f HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Allo onoma",
+    "number": "75767676356"
+}
+
+###
+DELETE http://localhost:3001/api/persons/66b3d7cac54c620a85217dec
 
 ###
 HEAD http://localhost:3001/api/persons/
