@@ -1,3 +1,5 @@
+require('dotenv').config()
+const Person = require('./models/person')
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
@@ -35,7 +37,9 @@ let phonebook = [
 ]
   
 app.get('/api/persons', (request, response) => {
-    response.json(phonebook)
+  Person.find({}).then(person => {
+    response.json(person)
+  })
 })
 
 app.get('/info', (request, response) => {
@@ -44,60 +48,38 @@ app.get('/info', (request, response) => {
 })
 
 app.get('/api/persons/:id', (request, response) => {
-    const id = request.params.id
-    const person = phonebook.find(person => person.id === id)
-    
-    if (person) {
-      response.json(person)
-    } else {
-      response.status(404).end()
-    }
+  Person.findById(request.params.id).then(person => {
+    response.json(person)
+  })
 })
 
-app.delete('/api/persons/:id', (request, response) => {
+app.delete('/api/persons/:id', (request, response) => { // not updated 
     const id = request.params.id
     phonebook = phonebook.filter(person => person.id !== id)
 
     response.status(204).send()
 })
 
-const randInt = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+// const randInt = (min, max) => {
+//     return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
 
 app.post('/api/persons', (request, response) => {
-    const bd = request.body
-    if (!bd.name && !bd.number) {
-        return response.status(400).json({
-            error: 'name and number missing'
-        })
-    }
-    if (!bd.name) {
-      return response.status(400).json({ 
-        error: 'name missing' 
-      })
-    }
-    if (!bd.number) {
-      return response.status(400).json({ 
-        error: 'number missing' 
-      })
-    }
+  const body = request.body
 
-    const twin = phonebook.find(person => person.name === bd.name)
-    if (twin) {
-        return response.status(400).json({
-            error: 'name must be unique'
-        })
-    }
+  if (body.name === undefined || body.number === undefined) {
+    return response.status(400).json({ error: 'content missing' })
+  }
+
+  const person = new Person({
+    name: body.name,
+    number: body.number,
+  })
+
+  person.save().then(savedPerson => {
+    response.json(savedPerson)
+  })
   
-    const person = {
-      name: bd.name,
-      number: bd.number,
-      id: `${randInt(0, 100000)}`
-    }
-    phonebook = phonebook.concat(person)
-  
-    response.json(person)
 })
 
 
