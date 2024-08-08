@@ -1,7 +1,7 @@
 GET http://localhost:3001/api/persons/
 
 ###
-GET http://localhost:3001/api/persons/66b3a4fc24d23216e9845a77
+GET http://localhost:3001/api/persons/66b3e0619fd17c1ffe4ac9d3
 
 ###
 GET http://localhost:3001/api/persons/50084
@@ -11,8 +11,8 @@ POST http://localhost:3001/api/persons/ HTTP/1.1
 content-type: application/json
 
 {
-    "name": "kostas P",
-    "number": "6962536422"
+    "name": "Manolis",
+    "number": "69-62536422"
 }
 
 ###
@@ -20,21 +20,48 @@ POST http://localhost:3001/api/persons/ HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Petros K",
-    "number": "75767676356"
+    "name": "Takis",
+    "number": "6-62536422"
 }
 
 ###
-PUT http://localhost:3001/api/persons/66b3e28e5230678d18c5f79f HTTP/1.1
+POST http://localhost:3001/api/persons/ HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Allo onoma",
-    "number": "75767676356"
+    "name": "kostas P",
+    "number": "696-2536422"
 }
 
 ###
-DELETE http://localhost:3001/api/persons/66b3d7cac54c620a85217dec
+POST http://localhost:3001/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Pe",
+    "number": "757-67676356"
+}
+
+###
+PUT http://localhost:3001/api/persons/66b4cccd6d3e9d3d467c7669 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Matt",
+    "number": "64-256613"
+}
+
+###
+POST http://localhost:3001/api/persons HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Kostas",
+    "number": "434-2556613"
+}
+
+###
+DELETE http://localhost:3001/api/persons/66b3e6a06ba540d0b7d47055
 
 ###
 HEAD http://localhost:3001/api/persons/
